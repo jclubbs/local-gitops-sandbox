@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sre-sample-web
+  namespace: default
+  labels:
+    app: sample-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-web
+  template:
+    metadata:
+      labels:
+        app: sample-web
+    spec:
+      containers:
+      - name: nginx-server
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sre-web-service
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: sample-web

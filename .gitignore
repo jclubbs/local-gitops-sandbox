@@ -1,0 +1,11 @@
+# Local OpenTofu/Terraform files
+.terraform/
+.tofu/
+*.tfstate
+*.tfstatebackup
+.terraform.locl.hcl
+.todu.lock.hcl
+
+# OS generates files
+.DS_Store
+Thumbs.db
